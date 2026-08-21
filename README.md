@@ -115,3 +115,12 @@ This package reflects the tested v2.2.2 production behaviour:
 - The Customer Journey contains the complete 12-step onboarding sequence, including
   creation/update of Manager's Inventory Quantity by Location report for MULTI_LOCATION
   businesses and the required return to Inventory Setup & Synchronisation afterward.
+
+
+## Public screenshot privacy update
+
+The public screenshots have been anonymised for privacy:
+- the real business identity was replaced with `DEMO COMPANY`;
+- the Customer Portal contact name/email was replaced with `Demo User · demo@example.com`.
+
+No application logic, production Worker, D1 data, URLs or workflow instructions were changed.

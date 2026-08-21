@@ -120,3 +120,19 @@ h3{font-size:20px;margin:.2em 0 .45em}
   .cta{flex-direction:column;align-items:flex-start;padding:30px}
   .brand img{width:260px;max-width:75vw}
 }
+
+/* Sequential onboarding guide v2 */
+.journey-note{max-width:980px;margin:0 auto 28px;padding:16px 18px;border:1px solid #f1c66d;border-left:5px solid var(--orange);border-radius:12px;background:#fff9ed;color:#5b4723}
+.journey-note.after{margin-top:28px;margin-bottom:0}
+.journey-sequence{display:grid;gap:26px}
+.journey-step{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(15,41,66,.05)}
+.journey-step:nth-child(even) .journey-copy{order:2}
+.journey-step:nth-child(even) .journey-media{order:1}
+.journey-number{display:inline-grid;place-items:center;min-width:46px;height:35px;padding:0 11px;border-radius:999px;background:var(--navy);color:#fff;font-size:13px;font-weight:900;letter-spacing:.06em;margin-bottom:12px}
+.journey-copy h3{font-size:24px;margin:0 0 12px}
+.journey-copy p{color:#4f6172;margin:0;line-height:1.72}
+.journey-media{border:1px solid #dfe7ef;border-radius:14px;overflow:hidden;background:#f8fafc}
+.journey-media a{display:block;background:#fff}
+.journey-media img{width:100%;height:auto;max-height:485px;object-fit:contain;object-position:top;background:#fff}
+.journey-caption{padding:10px 13px;border-top:1px solid var(--line);font-size:12px;font-weight:800;color:#64748b;background:#f8fafc}
+@media(max-width:850px){.journey-step{grid-template-columns:1fr;padding:17px}.journey-step:nth-child(even) .journey-copy,.journey-step:nth-child(even) .journey-media{order:initial}.journey-copy h3{font-size:21px}}

@@ -77,3 +77,41 @@ The website's **Start Free Trial** buttons direct users to the live Cloudflare I
 This website does **not** contain Inventory Guard credentials, tenant tokens, secure `#igb` bindings or Worker source code.
 
 Do not place secure Manager Custom Button URLs on the public website.
+
+
+## Revised sequential customer workflow
+
+The Customer Journey section now documents the production onboarding sequence in order,
+including generation of the single-use Customer Portal linking code and creation of the
+per-business Manager.io Access Token Secret under Settings → Access Tokens.
+
+It also covers Manager API2 Service Connection, inventory-mode detection, required Custom
+Buttons, Secure Business & Enable Multi-User Access, integrity baseline, controlled
+transactions, the 10-successful-transaction trial and annual subscription.
+
+Password recovery is an application feature and is intentionally not described on the marketing site until the secure recovery update is deployed.
+
+
+## Workflow v3 correction
+
+The public Customer Journey now explicitly includes the multi-location sequence:
+
+1. First Detect & Synchronise Inventory check.
+2. If MULTI_LOCATION: create or update Manager's standard Inventory Quantity by Location report using today's date and include every controlled active location.
+3. Return to Inventory Setup & Synchronisation and run Detect & Synchronise Inventory again.
+4. Proceed only after the current snapshot is successfully saved.
+5. Return to the Customer Portal to install the business-specific controls, then secure multi-user access.
+
+The Customer Portal copy-feedback change is an application update and is not advertised on the marketing site.
+
+
+## Final production-aligned website update
+
+This package reflects the tested v2.2.2 production behaviour:
+
+- Forgot Password self-service is live and tested.
+- Reset links are emailed from Inventory Guard and expire after 15 minutes.
+- Customer Portal copy buttons visibly confirm success with `Copied ✓`.
+- The Customer Journey contains the complete 12-step onboarding sequence, including
+  creation/update of Manager's Inventory Quantity by Location report for MULTI_LOCATION
+  businesses and the required return to Inventory Setup & Synchronisation afterward.

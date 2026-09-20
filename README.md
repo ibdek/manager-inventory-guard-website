@@ -1,126 +1,107 @@
 # Manager.io Inventory Guard Marketing Site
 
-Target public domain:
+Public marketing domain:
 
 **https://go-inventoryguard.adib.com.ng**
 
-This is a static GitHub Pages site. It is separate from the production Inventory Guard application running on Cloudflare.
+This repository hosts the static GitHub Pages marketing site for **Manager.io Inventory Guard**. It is intentionally separate from the production Inventory Guard application hosted on Cloudflare.
 
-## Production application links
+## Current production release
 
-- Start / registration: https://mgr-inv-guard-production.uplight76.workers.dev/start
-- Customer portal: https://mgr-inv-guard-production.uplight76.workers.dev/portal
+The website is aligned with **Inventory Guard v2.3.1**.
 
-## Recommended GitHub repository
+Production application:
 
-Create a new repository such as:
+- Start / registration: https://inventoryguard.adib.com.ng/start
+- Customer Portal: https://inventoryguard.adib.com.ng/portal
+- Inventory Setup & Synchronisation: https://inventoryguard.adib.com.ng/extension/location-sync
+- Inventory Guard Control Centre: https://inventoryguard.adib.com.ng/extension/control-centre
+- User Access Setup: https://inventoryguard.adib.com.ng/extension/access-control-setup
+- Bypass & Integrity Monitor: https://inventoryguard.adib.com.ng/extension/integrity-monitor
+- Subscription: https://inventoryguard.adib.com.ng/extension/subscription
 
-`manager-inventory-guard-website`
+The old workers.dev production address should not be used in customer-facing website links. The branded production domain is the canonical application origin.
 
-Upload the contents of this package to the root of the repository.
+## v2.3.1 onboarding model
 
-## Enable GitHub Pages
+The public site reflects the current simplified onboarding flow:
 
-1. Open the repository on GitHub.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select branch **main** and folder **/(root)**.
-5. Save.
-6. In **Custom domain**, enter:
+1. Customer registers a Manager.io business.
+2. Customer signs in to the Customer Portal and generates the one-time linking code.
+3. Customer manually creates only the bootstrap **Inventory Setup & Synchronisation** Custom Button under Manager Settings.
+4. Customer links the correct Manager business with the one-time code.
+5. Customer creates an authorised Manager Access Token and saves the Manager API2/base URL and token in Inventory Guard.
+6. Customer clicks **Complete Setup**.
+7. Inventory Guard automatically secures the business binding, detects inventory mode, synchronises inventory and locations, creates or refreshes today's **Inventory Quantity by Location** report where needed, and creates or updates the required controlled Custom Buttons.
+8. The integrity baseline is initialised after existing Manager records are reviewed.
+9. Where restricted Manager users are used, an authorised/full-access Manager administrator opens the Control Centre to refresh users and Divisions. The Customer Portal OWNER then assigns allowed Divisions and Inventory Locations before enabling User Access Control.
+10. Users operate through the controlled transaction buttons.
 
-   `go-inventoryguard.adib.com.ng`
+## Ongoing structural changes
 
-7. Save the custom domain.
-8. When available, enable **Enforce HTTPS**.
+Routine structural reconciliation is automatic in v2.3.1.
 
-A `CNAME` file is already included in this package.
+When Inventory Locations, Divisions or Manager users change, an authorised/full-access Manager administrator normally only needs to open the **Inventory Guard Control Centre**. Inventory Guard then reconciles the current structure.
 
-## DomainKing DNS record
+Important rules:
 
-Because your DNS remains with DomainKing, create this DNS record there:
+- existing restricted-user assignments are preserved;
+- newly discovered Divisions or Locations are not silently granted to restricted users;
+- a later SINGLE_LOCATION → MULTI_LOCATION transition automatically introduces the Inventory Transfer workflow;
+- **Synchronise & Repair Setup** is a recovery/maintenance tool and should not be presented as the routine process.
 
-- **Type:** CNAME
-- **Name / Host:** `go-inventoryguard`
-- **Target / Value:** `ibdek.github.io`
-- **TTL:** Default / Auto
+## Trial and annual plan
 
-Do not add `https://` to the CNAME value.
+- Trial: **10 successful controlled transactions per Manager business**
+- Annual plan: **US$37 per business for 365 days**
+- Validation failures, refreshes, integrity scans, unsuccessful submissions and duplicate reconciliation of already-counted transactions do not consume trial usage.
+- Selar payment claims can receive provisional annual access while administrator verification is pending.
+- Current payment-verification grace period: **72 hours**.
+- Assisted/direct onboarding and offline payment activation are also supported.
 
-If your GitHub account username used for Pages is not `ibdek`, replace `ibdek.github.io` with your actual GitHub Pages hostname.
+## GitHub Pages
 
-Do not create an A record for the same `go-inventoryguard` hostname.
+The repository is configured for the custom domain:
 
-## After DNS propagation
+**go-inventoryguard.adib.com.ng**
 
-Open:
+The `CNAME` file should remain in the repository root.
 
-`https://go-inventoryguard.adib.com.ng`
+Expected DNS record:
 
-The website's **Start Free Trial** buttons direct users to the live Cloudflare Inventory Guard onboarding page.
+- Type: CNAME
+- Host: `go-inventoryguard`
+- Target: `ibdek.github.io`
+
+Do not place `https://` in the DNS CNAME value.
 
 ## Files
 
 - `index.html` — main public website
-- `styles.css` — all site styling
-- `script.js` — mobile menu, FAQ and screenshot lightbox
+- `styles.css` — site styling
+- `script.js` — mobile navigation and FAQ/lightbox behaviour
 - `terms.html`
 - `privacy.html`
 - `disclaimer.html`
-- `CNAME` — GitHub Pages custom domain
-- `.nojekyll`
+- `CNAME`
 - `robots.txt`
 - `sitemap.xml`
-- `assets/` — logo, favicon and product screenshots
+- `assets/` — logo, favicon and historical/anonymised product screenshots
 
-## Important separation
+## Security separation
 
-This website does **not** contain Inventory Guard credentials, tenant tokens, secure `#igb` bindings or Worker source code.
+This public repository must never contain:
 
-Do not place secure Manager Custom Button URLs on the public website.
+- Manager.io Access Token Secrets
+- customer passwords
+- Inventory Guard administrator credentials
+- tenant installation-binding secrets
+- secure business-specific Custom Button bindings
+- Cloudflare secrets
+- production D1 exports or backups
 
+The public marketing website should link only to the canonical public production routes listed above.
 
-## Revised sequential customer workflow
+## Screenshot note
 
-The Customer Journey section now documents the production onboarding sequence in order,
-including generation of the single-use Customer Portal linking code and creation of the
-per-business Manager.io Access Token Secret under Settings → Access Tokens.
-
-It also covers Manager API2 Service Connection, inventory-mode detection, required Custom
-Buttons, Secure Business & Enable Multi-User Access, integrity baseline, controlled
-transactions, the 10-successful-transaction trial and annual subscription.
-
-Password recovery is an application feature and is intentionally not described on the marketing site until the secure recovery update is deployed.
-
-
-## Workflow v3 correction
-
-The public Customer Journey now explicitly includes the multi-location sequence:
-
-1. First Detect & Synchronise Inventory check.
-2. If MULTI_LOCATION: create or update Manager's standard Inventory Quantity by Location report using today's date and include every controlled active location.
-3. Return to Inventory Setup & Synchronisation and run Detect & Synchronise Inventory again.
-4. Proceed only after the current snapshot is successfully saved.
-5. Return to the Customer Portal to install the business-specific controls, then secure multi-user access.
-
-The Customer Portal copy-feedback change is an application update and is not advertised on the marketing site.
-
-
-## Final production-aligned website update
-
-This package reflects the tested v2.2.2 production behaviour:
-
-- Forgot Password self-service is live and tested.
-- Reset links are emailed from Inventory Guard and expire after 15 minutes.
-- Customer Portal copy buttons visibly confirm success with `Copied ✓`.
-- The Customer Journey contains the complete 12-step onboarding sequence, including
-  creation/update of Manager's Inventory Quantity by Location report for MULTI_LOCATION
-  businesses and the required return to Inventory Setup & Synchronisation afterward.
-
-
-## Public screenshot privacy update
-
-The public screenshots have been anonymised for privacy:
-- the real business identity was replaced with `DEMO COMPANY`;
-- the Customer Portal contact name/email was replaced with `Demo User · demo@example.com`.
-
-No application logic, production Worker, D1 data, URLs or workflow instructions were changed.
+Older anonymised screenshots remain in `assets/` for reference, but the main v2.3.1 onboarding content is intentionally text-led because the v2.3.1 Customer Portal and setup workflow changed materially from the earlier v2.2.x process. New screenshots should only be published after they have been anonymised and checked against the current production UI.

@@ -6,9 +6,7 @@ Public marketing domain:
 
 This repository hosts the static GitHub Pages marketing site for **Manager.io Inventory Guard**. It is intentionally separate from the production Inventory Guard application hosted on Cloudflare.
 
-## Current production release
-
-The website is aligned with **Inventory Guard v2.3.1**.
+## Production application
 
 Production application:
 
@@ -22,7 +20,7 @@ Production application:
 
 The old workers.dev production address should not be used in customer-facing website links. The branded production domain is the canonical application origin.
 
-## v2.3.1 onboarding model
+## Onboarding model
 
 The public site reflects the current simplified onboarding flow:
 
@@ -39,7 +37,7 @@ The public site reflects the current simplified onboarding flow:
 
 ## Ongoing structural changes
 
-Routine structural reconciliation is automatic in v2.3.1.
+Routine structural reconciliation is automatic.
 
 When Inventory Locations, Divisions or Manager users change, an authorised/full-access Manager administrator normally only needs to open the **Inventory Guard Control Centre**. Inventory Guard then reconciles the current structure.
 
@@ -104,4 +102,4 @@ The public marketing website should link only to the canonical public production
 
 ## Screenshot note
 
-Older anonymised screenshots remain in `assets/` for reference, but the main v2.3.1 onboarding content is intentionally text-led because the v2.3.1 Customer Portal and setup workflow changed materially from the earlier v2.2.x process. New screenshots should only be published after they have been anonymised and checked against the current production UI.
+Older anonymised screenshots remain in `assets/` for reference, but the main onboarding content is intentionally text-led because the Customer Portal and setup workflow changed materially from the earlier process. New screenshots should only be published after they have been anonymised and checked against the current production UI.

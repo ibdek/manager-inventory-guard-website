@@ -12,7 +12,6 @@ Current production baseline: **v2.3.5**.
 
 Production application:
 
-- Start / registration: https://inventoryguard.adib.com.ng/start
 - Inventory Setup & Synchronisation: https://inventoryguard.adib.com.ng/extension/location-sync
 - Inventory Guard Control Centre: https://inventoryguard.adib.com.ng/extension/control-centre
 - User Access Setup: https://inventoryguard.adib.com.ng/extension/access-control-setup
@@ -25,7 +24,7 @@ The old workers.dev production address should not be used in customer-facing web
 
 The public site reflects the current simplified onboarding flow:
 
-1. Customer registers a Manager.io business.
+1. The Manager.io business is registered through the authorised Inventory Guard onboarding process.
 2. The business obtains its one-time linking code during registration/onboarding.
 3. The administrator manually creates only the bootstrap **Inventory Setup & Synchronisation** Custom Button under Manager Settings.
 4. The administrator links the correct Manager business with the one-time code.

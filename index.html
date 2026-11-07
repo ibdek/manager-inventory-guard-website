@@ -46,7 +46,6 @@
       <p class="lead">Manager.io Inventory Guard adds controlled Sales Invoices, cash-sale Receipts and Inventory Transfers, while enforcing stock availability, protected sales prices, customer credit limits, restricted-user scope and bypass monitoring.</p>
       <div class="actions">
         <a class="btn primary" href="https://inventoryguard.adib.com.ng/start" rel="noopener" target="_blank">Start 10-Transaction Free Trial</a>
-        <a class="btn secondary" href="https://inventoryguard.adib.com.ng/portal" rel="noopener" target="_blank">Customer Sign In</a>
         <a class="btn orange" href="https://wa.me/2348035674941" rel="noopener" target="_blank">WhatsApp Support</a>
       </div>
       <div class="trust">
@@ -93,9 +92,9 @@
 <section class="section alt" id="how">
   <div class="container">
     <div class="center">
-      <div class="eyebrow">Customer journey</div>
+      <div class="eyebrow">Business onboarding</div>
       <h2>Onboarding sequence</h2>
-      <p>Inventory Guard removes several manual setup steps. The customer creates only the bootstrap Inventory Setup &amp; Synchronisation Custom Button; Inventory Guard handles the remaining required control setup after the business is linked.</p>
+      <p>Inventory Guard removes several manual setup steps. The business administrator creates only the bootstrap Inventory Setup &amp; Synchronisation Custom Button; Inventory Guard handles the remaining required control setup after the business is linked.</p>
     </div>
 
     <div class="journey-note">
@@ -103,14 +102,14 @@
     </div>
 
     <div class="steps">
-      <article class="step"><div class="num">1</div><h3>Register the business</h3><p>Open the Inventory Guard Start page and register the Manager.io business. One customer account may own multiple Manager businesses, but each business is a separate Inventory Guard tenant.</p></article>
-      <article class="step"><div class="num">2</div><h3>Generate a linking code</h3><p>Sign in to the Customer Portal, select the business and generate its single-use linking code. The current linking-code validity is 30 minutes.</p></article>
+      <article class="step"><div class="num">1</div><h3>Register the business</h3><p>Open the Inventory Guard Start page and register the Manager.io business. Each registered Manager business is treated as a separate Inventory Guard tenant.</p></article>
+      <article class="step"><div class="num">2</div><h3>Obtain the linking code</h3><p>Complete the registration/onboarding step for the business and obtain its single-use Inventory Guard linking code. The current linking-code validity is 30 minutes.</p></article>
       <article class="step"><div class="num">3</div><h3>Create the one bootstrap button</h3><p>In Manager.io, create <strong>Inventory Setup &amp; Synchronisation</strong> under Settings and point it to <strong>https://inventoryguard.adib.com.ng/extension/location-sync</strong>.</p></article>
       <article class="step"><div class="num">4</div><h3>Link the correct business</h3><p>Open Inventory Setup &amp; Synchronisation inside that Manager business and enter the one-time linking code.</p></article>
       <article class="step"><div class="num">5</div><h3>Save the Manager service connection</h3><p>Create an authorised Manager Access Token, then save the business API2/base URL and token in Inventory Guard. The token is protected and the Manager login password is not required.</p></article>
       <article class="step"><div class="num">6</div><h3>Click Complete Setup</h3><p>Inventory Guard secures the business binding, detects inventory mode, synchronises inventory and locations, creates or refreshes today's Inventory Quantity by Location report when needed, and creates or updates the required controlled Custom Buttons.</p></article>
       <article class="step"><div class="num">7</div><h3>Initialise integrity protection</h3><p>Open the Control Centre and review existing Manager records before initialising the Bypass &amp; Integrity Monitor baseline.</p></article>
-      <article class="step"><div class="num">8</div><h3>Configure restricted users if required</h3><p>An authorised/full-access Manager administrator refreshes users and Divisions from the Control Centre. The Customer Portal OWNER then assigns allowed Divisions and Inventory Locations before enabling User Access Control.</p></article>
+      <article class="step"><div class="num">8</div><h3>Configure restricted users if required</h3><p>An authorised/full-access Manager administrator opens User Access Setup from inside the Manager business, refreshes active users and Divisions, assigns allowed Divisions and Inventory Locations, and then enables User Access Control when the assignments are ready.</p></article>
     </div>
 
     <div class="journey-note after">
@@ -127,16 +126,12 @@
       <p>Inventory Guard can align restricted Manager users with specific Divisions and Inventory Locations. Full-access Manager users remain privileged.</p>
       <ul class="clean">
         <li>Refresh active Manager users and Divisions from the Control Centre; removed/inactive Manager users are excluded from User Access Setup</li>
-        <li>Assign permitted Divisions and Inventory Locations in the Customer Portal</li>
+        <li>Assign permitted Divisions and Inventory Locations from User Access Setup inside the Manager business</li>
         <li>Preserve existing restricted-user assignments during later refreshes</li>
         <li>Do not silently grant newly discovered Divisions or Locations to restricted users</li>
         <li>Enable access control only after assignments are ready</li>
         <li>Restricted operational users stay inside the controlled transaction pages and are not given a Back to Inventory Guard Control Centre navigation route</li>
       </ul>
-      <div class="actions">
-        <a class="btn primary" href="https://inventoryguard.adib.com.ng/extension/control-centre" rel="noopener" target="_blank">Open Control Centre</a>
-        <a class="btn secondary" href="https://inventoryguard.adib.com.ng/extension/access-control-setup" rel="noopener" target="_blank">User Access Setup</a>
-      </div>
     </div>
     <div class="callout">
       <div class="badge">Structure changes are handled automatically</div>
@@ -160,7 +155,7 @@
       <article class="card"><div class="iconbox">3</div><h3>Inventory Transfer</h3><p>Multi-location businesses use Controlled Inventory Transfer. Source location is controlled and destination selection remains within the permitted scope.</p></article>
       <article class="card"><div class="iconbox">4</div><h3>Monitor integrity</h3><p>Review bypass and integrity exceptions for covered records created directly in Manager or changed after controlled creation.</p></article>
       <article class="card"><div class="iconbox">5</div><h3>Refresh structure normally</h3><p>When locations, Divisions or users change, an authorised administrator opens the Control Centre to trigger the normal reconciliation path.</p></article>
-      <article class="card"><div class="iconbox">6</div><h3>Maintain access</h3><p>The Customer Portal OWNER reviews any newly discovered scope and grants it deliberately to restricted users where appropriate.</p></article>
+      <article class="card"><div class="iconbox">6</div><h3>Maintain access</h3><p>An authorised administrator reviews newly discovered scope in User Access Setup inside the Manager business and grants it deliberately to restricted users where appropriate.</p></article>
     </div>
   </div>
 </section>
@@ -198,10 +193,9 @@
           <li>Bypass &amp; integrity monitoring</li>
           <li>Automatic structural reconciliation</li>
         </ul>
-        <a class="btn primary" href="https://inventoryguard.adib.com.ng/extension/subscription" rel="noopener" target="_blank">Open Subscription</a>
       </div>
     </div>
-    <p class="center" style="margin-top:24px">Customers can pay through the configured Selar checkout in the Customer Portal. A submitted Selar reference can receive provisional annual access for up to 72 hours while administrator verification is pending. Assisted/direct payment activation is also supported.</p>
+    <p class="center" style="margin-top:24px">Annual access can be activated through the configured payment process or by assisted/direct payment where applicable. Subscription administration is handled from inside the linked Manager business.</p>
   </div>
 </section>
 
@@ -214,15 +208,14 @@
     <div class="faq">
       <div class="faq-item open"><button class="faq-q">Does Inventory Guard replace Manager.io?<span>+</span></button><div class="faq-a">No. Inventory Guard is an independent control extension. Transactions are still created in the linked Manager.io business.</div></div>
       <div class="faq-item"><button class="faq-q">How many transactions are free?<span>+</span></button><div class="faq-a">A new business receives 10 successful controlled transactions. Validation failures, refreshes, integrity scans, unsuccessful submissions and duplicate reconciliation of already-counted transactions do not consume the trial.</div></div>
-      <div class="faq-item"><button class="faq-q">Can one email manage more than one business?<span>+</span></button><div class="faq-a">Yes. One customer login can manage multiple Manager.io businesses. Each business has its own tenant, trial, subscription, Manager connection, secure binding and access settings.</div></div>
+      <div class="faq-item"><button class="faq-q">Can I use Inventory Guard with more than one Manager business?<span>+</span></button><div class="faq-a">Yes. Each Manager.io business is registered and controlled as its own Inventory Guard tenant, with its own trial, subscription, Manager connection, secure binding and access settings.</div></div>
       <div class="faq-item"><button class="faq-q">Do I still have to create all Inventory Guard Custom Buttons manually?<span>+</span></button><div class="faq-a">No. You manually create only the bootstrap Inventory Setup &amp; Synchronisation button. After the business is linked and the service connection is saved, Complete Setup creates or updates the required controlled buttons automatically.</div></div>
       <div class="faq-item"><button class="faq-q">What happens if there are no custom Inventory Locations?<span>+</span></button><div class="faq-a">Inventory Guard uses single-location mode with Manager's Default/Unspecified location. Controlled Inventory Transfer is not required until active custom locations exist.</div></div>
       <div class="faq-item"><button class="faq-q">What if I add Inventory Locations, Divisions or Manager users later?<span>+</span></button><div class="faq-a">An authorised/full-access Manager administrator opens the Inventory Guard Control Centre. The current structure is reconciled automatically. Existing restricted-user assignments are preserved, newly discovered scope is not silently granted, and Manager users who have been removed or are no longer active are excluded from User Access Setup.</div></div>
-      <div class="faq-item"><button class="faq-q">Will restricted users need administrator access?<span>+</span></button><div class="faq-a">No. An authorised administrator handles structural refreshes. The Customer Portal OWNER manages restricted-user assignments, and ordinary users continue only within their assigned Manager and Inventory Guard scope. Controlled transaction pages do not provide them with a Back to Inventory Guard Control Centre navigation route.</div></div>
+      <div class="faq-item"><button class="faq-q">Will restricted users need administrator access?<span>+</span></button><div class="faq-a">No. An authorised administrator handles setup, structural refreshes and restricted-user assignments from inside the Manager business. Ordinary users continue only within their assigned Manager and Inventory Guard scope. Controlled transaction pages do not provide them with a Back to Inventory Guard Control Centre navigation route.</div></div>
       <div class="faq-item"><button class="faq-q">What happens when the trial or subscription expires?<span>+</span></button><div class="faq-a">Further controlled transaction creation is blocked until annual access becomes active or is renewed. Integrity monitoring remains available for control and exception review.</div></div>\n      <div class="faq-item"><button class="faq-q">What if I replace an existing Manager.io business with a new one?<span>+</span></button><div class="faq-a">The replacement business should be registered and fully set up as a new Inventory Guard business. Where eligible, an administrator can preserve the unused portion of the existing annual access on the replacement business while keeping the original paid-through date.</div></div>
       <div class="faq-item"><button class="faq-q">Can Inventory Guard detect transactions created outside it?<span>+</span></button><div class="faq-a">Yes. The Bypass &amp; Integrity Monitor can flag covered Manager transactions created directly outside Inventory Guard, as well as controlled records later changed or deleted.</div></div>
-      <div class="faq-item"><button class="faq-q">Can you assist with onboarding?<span>+</span></button><div class="faq-a">Yes. Assisted/direct onboarding is supported. An administrator can create the customer/business, generate the linking code, assist with Manager setup, create a Customer Portal invitation and record direct/offline payment where applicable.</div></div>
-      <div class="faq-item"><button class="faq-q">What if I forget my Customer Portal password?<span>+</span></button><div class="faq-a">Use <strong>Forgot password?</strong> on the sign-in page. Inventory Guard emails a secure password-reset link to the registered account email.</div></div>
+      <div class="faq-item"><button class="faq-q">Can you assist with onboarding?<span>+</span></button><div class="faq-a">Yes. Assisted/direct onboarding is supported. An administrator can help register the business, obtain the linking code, complete the Manager setup and record direct/offline payment where applicable.</div></div>
       <div class="faq-item"><button class="faq-q">Is this an official Manager.io product?<span>+</span></button><div class="faq-a">No. Manager.io Inventory Guard is an independent integration/control solution designed to work with supported Manager.io Cloud Edition workflows.</div></div>
     </div>
   </div>
@@ -257,11 +250,10 @@
     <div>
       <div class="eyebrow" style="color:#fbbf24">Ready to protect your stock?</div>
       <h2>Start with 10 successful controlled transactions free.</h2>
-      <p style="margin:0;color:#dce8f3">Register your Manager.io business, create the one bootstrap button and let Inventory Guard complete the remaining setup.</p>
+      <p style="margin:0;color:#dce8f3">Register your Manager.io business, create the one bootstrap button, and complete administration from inside the linked Manager business.</p>
     </div>
     <div class="actions" style="margin:0">
       <a class="btn orange" href="https://inventoryguard.adib.com.ng/start" rel="noopener" target="_blank">Start Free Trial</a>
-      <a class="btn secondary" href="https://inventoryguard.adib.com.ng/portal" rel="noopener" target="_blank">Customer Sign In</a>
     </div>
   </div>
 </section>
@@ -289,7 +281,6 @@
       <p><a href="privacy.html">Privacy Policy</a></p>
       <p><a href="disclaimer.html">Disclaimer</a></p>
       <p><a href="https://inventoryguard.adib.com.ng/start" rel="noopener" target="_blank">Start Free Trial</a></p>
-      <p><a href="https://inventoryguard.adib.com.ng/portal" rel="noopener" target="_blank">Customer Sign In</a></p>
     </div>
   </div>
   <div class="container footer-bottom">

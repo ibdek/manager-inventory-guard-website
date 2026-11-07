@@ -6,6 +6,8 @@ Public marketing domain:
 
 This repository hosts the static GitHub Pages marketing site for **Manager.io Inventory Guard**. It is intentionally separate from the production Inventory Guard application hosted on Cloudflare.
 
+Current production baseline: **v2.3.5**.
+
 ## Production application
 
 Production application:
@@ -44,8 +46,10 @@ When Inventory Locations, Divisions or Manager users change, an authorised/full-
 Important rules:
 
 - existing restricted-user assignments are preserved;
+- only active Manager users are presented in User Access Setup; removed/inactive users are excluded;
 - newly discovered Divisions or Locations are not silently granted to restricted users;
 - a later SINGLE_LOCATION → MULTI_LOCATION transition automatically introduces the Inventory Transfer workflow;
+- restricted operational users stay inside the controlled transaction pages and do not receive a Back to Inventory Guard Control Centre navigation route;
 - **Synchronise & Repair Setup** is a recovery/maintenance tool and should not be presented as the routine process.
 
 ## Trial and annual plan

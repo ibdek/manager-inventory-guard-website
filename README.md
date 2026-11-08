@@ -6,11 +6,11 @@ Public marketing domain:
 
 This repository hosts the static GitHub Pages marketing site for **Manager.io Inventory Guard**. It is intentionally separate from the production Inventory Guard application hosted on Cloudflare.
 
-Current production baseline: **v2.3.5**.
+Current production baseline: **v2.3.6**.
 
 ## Production application
 
-Production application:
+Canonical production application:
 
 - Inventory Setup & Synchronisation: https://inventoryguard.adib.com.ng/extension/location-sync
 - Inventory Guard Control Centre: https://inventoryguard.adib.com.ng/extension/control-centre
@@ -18,45 +18,99 @@ Production application:
 - Bypass & Integrity Monitor: https://inventoryguard.adib.com.ng/extension/integrity-monitor
 - Subscription: https://inventoryguard.adib.com.ng/extension/subscription
 
-The old workers.dev production address should not be used in customer-facing website links. The branded production domain is the canonical application origin.
+The old workers.dev production address must not be used in customer-facing website links.
 
-## Onboarding model
+## v2.3.6 self-start onboarding model
 
-The public site reflects the current simplified onboarding flow:
+The normal new-business path no longer requires an Inventory Guard linking code first.
 
-1. The Manager.io business is registered through the authorised Inventory Guard onboarding process.
-2. The business obtains its one-time linking code during registration/onboarding.
-3. The administrator manually creates only the bootstrap **Inventory Setup & Synchronisation** Custom Button under Manager Settings.
-4. The administrator links the correct Manager business with the one-time code.
-5. The administrator creates an authorised Manager Access Token and saves the Manager API2/base URL and token in Inventory Guard.
-6. The administrator clicks **Complete Setup**.
-7. Inventory Guard automatically secures the business binding, detects inventory mode, synchronises inventory and locations, creates or refreshes today's **Inventory Quantity by Location** report where needed, and creates or updates the required controlled Custom Buttons.
-8. The integrity baseline is initialised after existing Manager records are reviewed.
-9. Where restricted Manager users are used, an authorised/full-access Manager administrator opens User Access Setup from inside the Manager business, refreshes active users and Divisions, assigns allowed Divisions and Inventory Locations, and enables User Access Control when ready.
-10. Users operate through the controlled transaction buttons.
+1. In the target Manager.io business, create one bootstrap Custom Button named **Inventory Setup & Synchronisation** pointing to:
+   https://inventoryguard.adib.com.ng/extension/location-sync
+2. Open that button inside the correct Manager business.
+3. Enter:
+   - Manager API2 endpoint;
+   - administrator-level Manager Access Token Secret;
+   - contact name;
+   - contact email;
+   - contact phone.
+4. Click **Register Business & Start Free Trial**.
+5. Inventory Guard verifies the Manager API2 connection, creates the tenant, creates the secure installation binding and starts the 10-successful-transaction trial automatically.
+6. Continue with **Complete Setup**.
+7. Inventory Guard detects SINGLE_LOCATION or MULTI_LOCATION operation, synchronises inventory and locations, creates or refreshes the required stock report where necessary, and creates/repairs the controlled Custom Buttons.
+8. Review the print-theme selections.
+9. Initialise the Bypass & Integrity Monitor baseline after reviewing existing Manager records.
+10. If restricted Manager users are used, configure User Access Setup and then enable enforcement when assignments are ready.
+
+### Existing business / Assisted Onboarding fallback
+
+The one-time linking-code flow remains available for:
+
+- an already-registered Inventory Guard business;
+- Assisted Onboarding;
+- recovery cases where the tenant already exists.
+
+The linking code is entered under **Already registered or using Assisted Onboarding? → Link Existing Business**.
+
+## Inventory behaviour
+
+### SINGLE_LOCATION
+
+Inventory Guard uses Manager's built-in **Default/Unspecified** location automatically.
+
+Where direct API2 inventory quantity is unavailable or unreliable, Inventory Guard uses the Manager stock-report path automatically so a missing API quantity is not treated as zero stock.
+
+### MULTI_LOCATION
+
+Inventory Guard synchronises active custom Inventory Locations and maintains the **Inventory Quantity by Location** reporting/control path.
+
+A later SINGLE_LOCATION → MULTI_LOCATION transition is reconciled automatically and introduces the Controlled Inventory Transfer workflow.
 
 ## Ongoing structural changes
 
-Routine structural reconciliation is automatic.
+When Inventory Locations, Divisions or Manager users change, an authorised/full-access Manager administrator normally opens the **Inventory Guard Control Centre**. Inventory Guard reconciles the current structure.
 
-When Inventory Locations, Divisions or Manager users change, an authorised/full-access Manager administrator normally only needs to open the **Inventory Guard Control Centre**. Inventory Guard then reconciles the current structure.
-
-Important rules:
+Rules:
 
 - existing restricted-user assignments are preserved;
-- only active Manager users are presented in User Access Setup; removed/inactive users are excluded;
+- removed/inactive Manager users are excluded from User Access Setup;
 - newly discovered Divisions or Locations are not silently granted to restricted users;
-- a later SINGLE_LOCATION → MULTI_LOCATION transition automatically introduces the Inventory Transfer workflow;
-- restricted operational users stay inside the controlled transaction pages and do not receive a Back to Inventory Guard Control Centre navigation route;
-- **Synchronise & Repair Setup** is a recovery/maintenance tool and should not be presented as the routine process.
+- restricted operational users stay inside the controlled transaction pages and do not receive a Back to Inventory Guard Control Centre route;
+- **Synchronise & Repair Setup** is a recovery/maintenance tool, not a routine operating step.
 
-## Trial and annual plan
+## Trial and annual subscription
 
 - Trial: **10 successful controlled transactions per Manager business**
 - Annual plan: **US$37 per business for 365 days**
 - Validation failures, refreshes, integrity scans, unsuccessful submissions and duplicate reconciliation of already-counted transactions do not consume trial usage.
-- Annual access is administered from inside the linked Manager business through the configured subscription/payment process.
-- Assisted/direct onboarding and offline payment activation are also supported.
+
+### Selar payment workflow
+
+1. Customer opens **Subscription** inside the linked Manager business.
+2. Customer clicks **Subscribe Now** and pays through the configured Selar checkout.
+3. After payment, the customer returns to Inventory Guard and submits the genuine Selar receipt/order/payment reference.
+4. A customer-submitted Selar claim receives provisional annual access while administrator verification is pending.
+5. The administrator verifies the payment against the Selar dashboard.
+6. If the customer paid but did not submit the return form, or submitted an incorrect reference, the customer can notify support by WhatsApp/email. After independently confirming the payment in Selar, the administrator can use the audited **Selar administrator override**.
+7. The override bypasses the missed/incorrect return form only; it does not bypass payment verification.
+8. Verified Selar records remain visible in **Selar payment verification queue / history**.
+
+The current pending-verification grace period for customer-submitted Selar claims is **72 hours**.
+
+### Replacement business
+
+Where eligible, unused annual access can be transferred from a permanently replaced Manager business to a fully onboarded replacement business without extending the original paid-through date.
+
+## Administrator UI notes
+
+Current v2.3.6 administration includes:
+
+- Selar payment verification queue / history;
+- Selar administrator override;
+- Offline / direct payments;
+- replacement business / subscription transfer;
+- Customers & onboarding with business count plus Expand / Collapse.
+
+These administrator-only controls should be described publicly only at a workflow level. Never publish administrator credentials, tenant secrets or production database information.
 
 ## GitHub Pages
 
@@ -64,7 +118,7 @@ The repository is configured for the custom domain:
 
 **go-inventoryguard.adib.com.ng**
 
-The `CNAME` file should remain in the repository root.
+The `CNAME` file must remain in the repository root.
 
 Expected DNS record:
 
@@ -74,32 +128,17 @@ Expected DNS record:
 
 Do not place `https://` in the DNS CNAME value.
 
-## Files
-
-- `index.html` — main public website
-- `styles.css` — site styling
-- `script.js` — mobile navigation and FAQ/lightbox behaviour
-- `terms.html`
-- `privacy.html`
-- `disclaimer.html`
-- `CNAME`
-- `robots.txt`
-- `sitemap.xml`
-- `assets/` — logo, favicon and historical/anonymised product screenshots
-
 ## Security separation
 
 This public repository must never contain:
 
-- Manager.io Access Token Secrets
-- Inventory Guard administrator credentials
-- tenant installation-binding secrets
-- secure business-specific Custom Button bindings
-- Cloudflare secrets
-- production D1 exports or backups
+- Manager.io Access Token Secrets;
+- Inventory Guard administrator credentials;
+- tenant installation-binding secrets;
+- secure business-specific Custom Button bindings;
+- Cloudflare secrets;
+- production D1 exports or backups.
 
-The public marketing website should link only to the canonical public production routes listed above.
+## Release note
 
-## Screenshot note
-
-Older anonymised screenshots remain in `assets/` for reference, but the main onboarding content is intentionally text-led because the setup and in-business administration workflow changed materially from the earlier process. New screenshots should only be published after they have been anonymised and checked against the current production UI.
+The public site must identify the current production baseline as **v2.3.6** and must not describe linking-code onboarding as the normal new-business workflow.
